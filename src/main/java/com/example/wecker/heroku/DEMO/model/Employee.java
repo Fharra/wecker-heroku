@@ -7,13 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "employees")
 public class Employee {
 
+	@ApiModelProperty(notes = "Employee ID")
 	private long id;
+	@ApiModelProperty(notes = "Employee first name")
 	private String firstName;
+	@ApiModelProperty(notes = "Employee last name")
 	private String lastName;
+	@ApiModelProperty(notes = "Employee email ID")
 	private String emailId;
 
 	public Employee() {
@@ -64,7 +70,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", emailId=" + emailId + "]";
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId
+				+ "]";
 	}
 }

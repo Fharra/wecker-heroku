@@ -22,6 +22,10 @@ import com.example.wecker.heroku.DEMO.model.Employee;
 import com.example.wecker.heroku.DEMO.repository.EmployeeRepository;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -31,11 +35,17 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
+	@ApiOperation(value = "List of all employees in the company", response = List.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
+			@ApiResponse(code = 401, message = "You are not authorized."),
+			@ApiResponse(code = 403, message = "Access is forbidden"),
+			@ApiResponse(code = 404, message = "Resource not found") })
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
 	}
 
+	@ApiOperation(value = "Get employee by id", response = ResponseEntity.class)
 	@GetMapping("/employees/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
 			throws ResourceNotFoundException {
@@ -44,11 +54,14 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(employee);
 	}
 
+	@ApiOperation(value = "Add an employee")
 	@PostMapping("/employees")
-	public Employee createEmployee(@Valid @RequestBody Employee employee) {
+	public Employee createEmployee(
+			@ApiParam(value = "Employee object store in database table", required = true) @Valid @RequestBody Employee employee) {
 		return employeeRepository.save(employee);
 	}
 
+	@ApiOperation(value = "Update an employee")
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Long employeeId,
 			@Valid @RequestBody Employee employeeDetails) throws ResourceNotFoundException {
@@ -61,6 +74,7 @@ public class EmployeeController {
 		return ResponseEntity.ok(updatedEmployee);
 	}
 
+	@ApiOperation(value = "Delete an employee")
 	@DeleteMapping("/employees/{id}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
 			throws ResourceNotFoundException {
