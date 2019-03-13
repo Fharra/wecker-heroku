@@ -18,7 +18,7 @@ public class Swagger2Config {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("net.guides.springboot2.springboot2swagger2.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.example.wecker.heroku.DEMO.controller"))
 				.paths(PathSelectors.regex("/.*")).build().apiInfo(apiEndPointsInfo());
 	}
 
