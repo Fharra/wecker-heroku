@@ -1,2 +1,15 @@
 # wercker-heroku
 https://dzone.com/articles/spring-boot-2-restful-api-documentation-with-swagg
+
+POSTGRES_PASSWORD: ourlittlesecret
+POSTGRES_PORT=tcp://172.XX.X.XX:5432
+POSTGRES_ENV_POSTGRES_PASSWORD=ourlittlesecret
+POSTGRES_ENV_LANG=en_US.utf8
+POSTGRES_ENV_PG_MAJOR=9.4
+POSTGRES_PORT_5432_TCP_PORT=5432
+POSTGRES_PORT_5432_TCP_ADDR=172.XX.X.XX
+POSTGRES_ENV_PGDATA=/var/lib/postgresql/data
+POSTGRES_NAME=/wercker-pipeline-c880ea26-3902-4b03-a4b6-e718dc351c80/postgres
+POSTGRES_PORT_5432_TCP=tcp://172.XX.X.XX:5432
+POSTGRES_PORT_5432_TCP_PROTO=tcp
+POSTGRES_ENV_PG_VERSION=9.4.1-1.pgdg70+1
