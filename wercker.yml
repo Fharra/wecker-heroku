@@ -17,3 +17,9 @@ build:
       goals: clean install
       cache_repo: true
       version: 3.5.2
+
+services:
+   - id: postgres
+     env:
+       POSTGRES_PASSWORD: eldiadelplatano
+       POSTGRES_USER: myuser  # optional
