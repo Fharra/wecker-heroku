@@ -2,8 +2,6 @@ package com.example.wecker.heroku.DEMO.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,19 +18,20 @@ public class Employee {
 	@ApiModelProperty(notes = "Employee last name")
 	private String lastName;
 	@ApiModelProperty(notes = "Employee email ID")
-	private String emailId;
+	private String emailAddress;
 
 	public Employee() {
 	}
 
-	public Employee(String firstName, String lastName, String emailId) {
+	public Employee(String firstName, String lastName, String emailAddress) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.emailId = emailId;
+		this.emailAddress = emailAddress;
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", nullable = false)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -41,7 +40,7 @@ public class Employee {
 		this.id = id;
 	}
 
-	@Column(name = "first_name", nullable = false)
+	@Column(name = "firstname", nullable = false)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -50,7 +49,7 @@ public class Employee {
 		this.firstName = firstName;
 	}
 
-	@Column(name = "last_name", nullable = false)
+	@Column(name = "lastname", nullable = false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -59,18 +58,18 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	@Column(name = "email_address", nullable = false)
-	public String getEmailId() {
-		return emailId;
+	@Column(name = "emailaddress", nullable = false)
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId
-				+ "]";
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId="
+				+ emailAddress + "]";
 	}
 }
