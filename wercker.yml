@@ -21,5 +21,8 @@ build:
 services:
    - id: postgres
      env:
-       POSTGRES_PASSWORD: eldiadelplatano
-       POSTGRES_USER: myuser  # optional
+       POSTGRES_PASSWORD: admin
+       POSTGRES_USER: postgres
+       POSTGRES_DATASOURCE_URL: jdbc:postgresql://localhost:5432/employeeManagement
+       POSTGRES_PORT_5432_TCP_PROTO: tcp
+       POSTGRES_PORT_5432_TCP: tcp://localhost:5432
